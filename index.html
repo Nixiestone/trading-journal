@@ -3,562 +3,792 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Elite Gold Trading Plan</title>
+    <title>Equity Edge Instant Account Plan</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
+            padding: 15px;
         }
+        
+        .mobile-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .nav-bar {
+            background: white;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .nav-bar h1 {
+            color: #667eea;
+            font-size: clamp(18px, 4vw, 24px);
+            margin: 0;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .nav-link {
+            text-decoration: none;
+            color: white;
+            background: #667eea;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: clamp(13px, 2.5vw, 15px);
+            transition: all 0.3s;
+        }
+        
+        .nav-link:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+        }
+        
+        .nav-link.active {
+            background: #764ba2;
+        }
+        
         .container {
             background: white;
-            border-radius: 12px;
-            padding: 40px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            margin-bottom: 20px;
         }
+        
         .header {
             text-align: center;
             border-bottom: 3px solid #667eea;
-            padding-bottom: 20px;
-            margin-bottom: 30px;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
         }
-        h1 {
+        
+        .header h2 {
             color: #2d3748;
-            font-size: 32px;
-            margin: 0 0 10px 0;
+            font-size: clamp(20px, 5vw, 32px);
+            margin-bottom: 8px;
         }
+        
         .subtitle {
             color: #718096;
-            font-size: 16px;
+            font-size: clamp(12px, 3vw, 16px);
             margin: 5px 0;
         }
+        
+        .author {
+            color: #667eea;
+            font-size: clamp(11px, 2.5vw, 14px);
+            font-style: italic;
+            margin-top: 10px;
+        }
+        
+        h3 {
+            color: #667eea;
+            font-size: clamp(18px, 4vw, 24px);
+            margin-top: 25px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 8px;
+        }
+        
+        h4 {
+            color: #4a5568;
+            font-size: clamp(16px, 3.5vw, 18px);
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+        
+        p, li {
+            font-size: clamp(13px, 2.5vw, 15px);
+            line-height: 1.6;
+            color: #4a5568;
+            margin-bottom: 8px;
+        }
+        
+        .alert-box, .success-box, .info-box {
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 6px;
+            border-left: 4px solid;
+        }
+        
         .alert-box {
             background: #fed7d7;
-            border-left: 4px solid #f56565;
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 4px;
+            border-color: #f56565;
         }
+        
         .success-box {
             background: #c6f6d5;
-            border-left: 4px solid #48bb78;
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 4px;
+            border-color: #48bb78;
         }
+        
         .info-box {
             background: #bee3f8;
-            border-left: 4px solid #4299e1;
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 4px;
+            border-color: #4299e1;
         }
-        h2 {
-            color: #667eea;
-            font-size: 24px;
-            margin-top: 30px;
-            border-bottom: 2px solid #e2e8f0;
-            padding-bottom: 10px;
-        }
-        h3 {
-            color: #4a5568;
-            font-size: 18px;
-            margin-top: 20px;
-        }
+        
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin: 20px 0;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 10px;
+            margin: 15px 0;
         }
+        
         .stat-card {
             background: #f7fafc;
-            padding: 15px;
-            border-radius: 8px;
+            padding: 12px;
+            border-radius: 6px;
             border: 1px solid #e2e8f0;
         }
+        
         .stat-label {
-            font-size: 12px;
+            font-size: clamp(10px, 2vw, 12px);
             color: #718096;
             text-transform: uppercase;
             font-weight: 600;
         }
+        
         .stat-value {
-            font-size: 24px;
+            font-size: clamp(18px, 4vw, 24px);
             color: #2d3748;
             font-weight: bold;
             margin-top: 5px;
         }
-        ul {
-            line-height: 1.8;
-            color: #4a5568;
+        
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
         }
+        
         .checklist {
             background: #f7fafc;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 15px 0;
+            padding: 12px;
+            border-radius: 6px;
+            margin: 12px 0;
         }
-        .checklist li {
-            list-style: none;
+        
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
             padding: 8px 0;
+            cursor: pointer;
+            user-select: none;
         }
-        .checklist li:before {
-            content: "☐ ";
-            color: #667eea;
-            font-weight: bold;
-            font-size: 18px;
-            margin-right: 8px;
+        
+        .checklist-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-right: 10px;
+            margin-top: 2px;
+            cursor: pointer;
+            flex-shrink: 0;
         }
+        
+        .checklist-item label {
+            cursor: pointer;
+            flex: 1;
+        }
+        
+        .checklist-item.checked label {
+            text-decoration: line-through;
+            opacity: 0.6;
+        }
+        
         .risk-matrix {
             background: #2d3748;
             color: white;
-            padding: 20px;
-            border-radius: 8px;
+            padding: 15px;
+            border-radius: 6px;
             font-family: 'Courier New', monospace;
-            margin: 20px 0;
+            margin: 15px 0;
+            font-size: clamp(11px, 2vw, 13px);
             white-space: pre-wrap;
+            overflow-x: auto;
         }
-        .download-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            padding: 15px 40px;
-            font-size: 18px;
-            border-radius: 8px;
-            cursor: pointer;
-            display: block;
-            margin: 30px auto;
-            font-weight: bold;
-            transition: transform 0.2s;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-        }
-        .download-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
-        }
+        
         table {
             width: 100%;
             border-collapse: collapse;
             margin: 15px 0;
+            font-size: clamp(12px, 2vw, 14px);
         }
+        
         th, td {
-            padding: 12px;
+            padding: 10px 8px;
             text-align: left;
             border-bottom: 1px solid #e2e8f0;
         }
+        
         th {
             background: #667eea;
             color: white;
             font-weight: 600;
         }
+        
         .phase-badge {
             display: inline-block;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 12px;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: clamp(11px, 2vw, 12px);
             font-weight: bold;
-            margin-right: 10px;
+            margin-right: 8px;
         }
+        
         .phase-1 {
             background: #fed7d7;
             color: #c53030;
         }
+        
         .phase-2 {
             background: #c6f6d5;
             color: #2f855a;
         }
+        
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        
+        .download-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: clamp(14px, 3vw, 16px);
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.2s;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .download-btn:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+        
+        .download-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+        
+        .reset-btn {
+            background: #f56565;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: clamp(14px, 3vw, 16px);
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+        
+        .reset-btn:hover {
+            background: #c53030;
+            transform: translateY(-2px);
+        }
+        
+        strong {
+            color: #2d3748;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            table {
+                font-size: 11px;
+                display: block;
+                overflow-x: auto;
+            }
+            
+            th, td {
+                padding: 8px 4px;
+            }
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .nav-bar, .btn-group {
+                display: none !important;
+            }
+            
+            .container {
+                box-shadow: none;
+                page-break-inside: avoid;
+            }
+        }
     </style>
 </head>
 <body>
-    <nav>
-        <a href="journal.html" style="color: white; text-decoration: none; font-weight: bold;">&larr; Journal</a>
-    </nav>
-    <div class="container" id="content">
-        <div class="header">
-            <h1> EQUITY EDGE TRADER STRATEGY</h1>
-            <div class="subtitle">$50K Prop Account Recovery & Profit Plan</div>
-            <div class="subtitle">Gold Trading Strategy | 30-Day Execution Blueprint</div>
-        </div>
-
-        <div class="alert-box">
-            <strong>⚠️ CRITICAL ACCOUNT STATUS</strong><br>
-            Current Balance: $49,714 | Target: $57,500+ | Withdrawal Goal: $5,000
-        </div>
-
-        <h2>📊 CURRENT SITUATION ANALYSIS</h2>
+    <div class="mobile-wrapper">
+        <nav class="nav-bar">
+            <h1>📊 Trading Hub</h1>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link active">Trading Plan</a>
+                <a href="journal.html" class="nav-link">Journal</a>
+            </div>
+        </nav>
         
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-label">Starting Balance</div>
-                <div class="stat-value">$50,000</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-label">Current Balance</div>
-                <div class="stat-value" style="color: #f56565;">$49,714</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-label">Current Loss</div>
-                <div class="stat-value" style="color: #f56565;">-$286</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-label">Target Profit</div>
-                <div class="stat-value" style="color: #48bb78;">$7,286</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-label">3% Buffer</div>
-                <div class="stat-value">$1,500</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-label">Withdrawal Target</div>
-                <div class="stat-value" style="color: #667eea;">$5,000</div>
-            </div>
+        <div class="btn-group">
+            <button class="download-btn" onclick="generatePDF()" id="downloadBtn">
+                📥 DOWNLOAD PDF
+            </button>
+            <button class="reset-btn" onclick="resetChecklist()">
+                🔄 RESET CHECKLIST
+            </button>
         </div>
-
-        <h2>📋 EQUITY EDGE INSTANT ACCOUNT RULES</h2>
         
-        <div class="info-box">
-            <strong>Non-Negotiable Rules:</strong>
+        <div class="container" id="content">
+            <div class="header">
+                <h2>🏆 EQUITY EDGE INSTANT ACCOUNT PLAN</h2>
+                <div class="subtitle">$50K Prop Account Recovery & Profit Strategy</div>
+                <div class="subtitle">Gold Trading Blueprint | 30-Day Execution Plan</div>
+                <div class="author">By Blessing Omoregie</div>
+            </div>
+
+            <div class="alert-box">
+                <strong>⚠️ CRITICAL ACCOUNT STATUS</strong><br>
+                Current Balance: $49,714 | Target: $57,500+ | Withdrawal Goal: $5,000
+            </div>
+
+            <h3>📊 CURRENT SITUATION ANALYSIS</h3>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">Starting Balance</div>
+                    <div class="stat-value">$50,000</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Current Balance</div>
+                    <div class="stat-value" style="color: #f56565;">$49,714</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Current Loss</div>
+                    <div class="stat-value" style="color: #f56565;">-$286</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Target Profit</div>
+                    <div class="stat-value" style="color: #48bb78;">$7,286</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">3% Buffer</div>
+                    <div class="stat-value">$1,500</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Withdrawal Target</div>
+                    <div class="stat-value" style="color: #667eea;">$5,000</div>
+                </div>
+            </div>
+
+            <h3>📋 EQUITY EDGE INSTANT ACCOUNT RULES</h3>
+            
+            <div class="info-box">
+                <strong>Non-Negotiable Rules:</strong>
+                <ul>
+                    <li><strong>15% Consistency Rule:</strong> Largest winning day ≤ 15% of total net profits</li>
+                    <li><strong>3% Daily Drawdown:</strong> $48,550 daily loss limit</li>
+                    <li><strong>5% Max Trailing Drawdown:</strong> $47,250 from highest balance</li>
+                    <li><strong>1% Max Risk Per Trade:</strong> Currently $497.14 maximum</li>
+                    <li><strong>3% Profit Buffer:</strong> First $1,500 is non-withdrawable</li>
+                    <li><strong>Largest Loss ≤ Largest Win:</strong> Maintain this ratio</li>
+                    <li><strong>2-Minute Trade Duration:</strong> Average must exceed 2 minutes</li>
+                    <li><strong>No Weekend Holding:</strong> Trades auto-close Friday</li>
+                    <li><strong>News Restriction:</strong> No trades 8 min before/after high-impact news</li>
+                </ul>
+            </div>
+
+            <h3>🎯 THE TWO-PHASE STRATEGY</h3>
+
+            <h4><span class="phase-badge phase-1">PHASE 1</span>Recovery + Buffer Building</h4>
+            <p><strong>Target:</strong> $1,786 profit in 10-12 trading days<br>
+            <strong>Goal:</strong> Recover $286 loss + build $1,500 buffer = $51,500 account</p>
+
+            <h4><span class="phase-badge phase-2">PHASE 2</span>Accelerated Growth</h4>
+            <p><strong>Target:</strong> $6,000 profit in 12-15 trading days<br>
+            <strong>Goal:</strong> Reach $57,500+ for withdrawal eligibility</p>
+
+            <h3>📈 THE SNIPER STRATEGY</h3>
+
+            <h4>Trading Parameters</h4>
             <ul>
-                <li><strong>15% Consistency Rule:</strong> Largest winning day ≤ 15% of total net profits</li>
-                <li><strong>3% Daily Drawdown:</strong> $48,550 daily loss limit (from balance at rollover)</li>
-                <li><strong>5% Max Trailing Drawdown:</strong> $47,250 from highest balance/equity</li>
-                <li><strong>1% Max Risk Per Trade:</strong> Currently $497.14 maximum</li>
-                <li><strong>3% Profit Buffer:</strong> First $1,500 profit is non-withdrawable buffer</li>
-                <li><strong>Largest Loss ≤ Largest Win:</strong> Your biggest loss can't exceed biggest win</li>
-                <li><strong>2-Minute Trade Duration:</strong> Average must exceed 2 minutes</li>
-                <li><strong>No Weekend Holding:</strong> All trades auto-close Friday market close</li>
-                <li><strong>News Restriction:</strong> No trades 8 min before/after high-impact news</li>
+                <li><strong>Asset:</strong> XAU/USD (Gold)</li>
+                <li><strong>Timeframes:</strong> 15-min (entry) + 1-hour (trend)</li>
+                <li><strong>Session:</strong> London/NY Overlap (8:00 AM - 12:00 PM EST)</li>
+                <li><strong>Max Trades:</strong> 2 per day</li>
             </ul>
-        </div>
 
-        <div class="alert-box">
-            <strong>🚫 PROHIBITED BEHAVIORS (Instant Account Breach):</strong>
-            <ul>
-                <li>Trading during news windows (8-minute buffer)</li>
-                <li>Gambling behaviors: excessive leverage, martingale, one-sided betting</li>
-                <li>Splitting large trades into smaller positions to bypass limits</li>
-                <li>Drastically altering trade durations</li>
-                <li>Using EAs or copy trading services</li>
-            </ul>
-        </div>
+            <h4>Entry Rules (ALL Must Align)</h4>
+            <ol>
+                <li>Trend Confirmation: Price above 20 EMA & 50 SMA (for longs)</li>
+                <li>Pullback Signal: Price touches 20 EMA</li>
+                <li>Momentum: RSI in 40-45 zone</li>
+                <li>Price Action: Bullish engulfing or pin bar</li>
+                <li>No News: Clear 8-minute window</li>
+            </ol>
 
-        <h2>🎯 THE TWO-PHASE STRATEGY</h2>
+            <h4>Position Sizing</h4>
+            <table>
+                <tr>
+                    <th>Phase</th>
+                    <th>Risk</th>
+                    <th>Amount</th>
+                    <th>Stop Loss</th>
+                    <th>Take Profit</th>
+                </tr>
+                <tr>
+                    <td>Phase 1</td>
+                    <td>0.8%</td>
+                    <td>$397</td>
+                    <td>1.5 ATR</td>
+                    <td>3:1 RR</td>
+                </tr>
+                <tr>
+                    <td>Phase 2</td>
+                    <td>0.9%</td>
+                    <td>$463</td>
+                    <td>1.5 ATR</td>
+                    <td>3:1 RR</td>
+                </tr>
+            </table>
 
-        <h3><span class="phase-badge phase-1">PHASE 1</span>Recovery + Buffer Building</h3>
-        <p><strong>Target:</strong> $1,786 profit in 10-12 trading days<br>
-        <strong>Goal:</strong> Recover $286 loss + build $1,500 buffer = $51,500 account balance</p>
+            <h3>📅 DAILY EXECUTION CHECKLIST</h3>
 
-        <h3><span class="phase-badge phase-2">PHASE 2</span>Accelerated Growth</h3>
-        <p><strong>Target:</strong> $6,000 profit in 12-15 trading days<br>
-        <strong>Goal:</strong> Reach $57,500+ for $5,000 withdrawal eligibility</p>
+            <h4>Pre-Market (7:30 AM EST)</h4>
+            <div class="checklist" id="premarket-checklist">
+                <div class="checklist-item">
+                    <input type="checkbox" id="check1">
+                    <label for="check1">Check economic calendar for high-impact news</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check2">
+                    <label for="check2">Identify support/resistance on 1H and 4H charts</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check3">
+                    <label for="check3">Calculate today's risk amount (Balance × 0.008)</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check4">
+                    <label for="check4">Set limits: $500 profit OR $800 loss = DONE</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check5">
+                    <label for="check5">Review yesterday's trades and journal</label>
+                </div>
+            </div>
 
-        <h2>📈 THE SNIPER STRATEGY - GOLD TRADING</h2>
+            <h4>During Trading (8:00 AM - 12:00 PM)</h4>
+            <div class="checklist" id="trading-checklist">
+                <div class="checklist-item">
+                    <input type="checkbox" id="check6">
+                    <label for="check6">Wait for complete setup: Trend + Pullback + RSI + PA</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check7">
+                    <label for="check7">Verify no news within 8-minute window</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check8">
+                    <label for="check8">Place trade with 1.5 ATR stop and 3 ATR target</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check9">
+                    <label for="check9">Set alarm for 8 min before news</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check10">
+                    <label for="check10">Document entry in journal immediately</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check11">
+                    <label for="check11">STOP after 2 trades regardless of outcome</label>
+                </div>
+            </div>
 
-        <h3>Trading Parameters</h3>
-        <ul>
-            <li><strong>Asset:</strong> XAU/USD (Gold)</li>
-            <li><strong>Timeframes:</strong> 15-min (entry) + 1-hour (trend confirmation)</li>
-            <li><strong>Session:</strong> London/NY Overlap (8:00 AM - 12:00 PM EST)</li>
-            <li><strong>Max Trades:</strong> 2 per day maximum</li>
-        </ul>
+            <h4>Post-Market Review</h4>
+            <div class="checklist" id="postmarket-checklist">
+                <div class="checklist-item">
+                    <input type="checkbox" id="check12">
+                    <label for="check12">Log complete trade details and screenshots</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check13">
+                    <label for="check13">Document emotional state and decisions</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check14">
+                    <label for="check14">Calculate: largest win, largest loss, biggest day</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check15">
+                    <label for="check15">Update consistency tracking spreadsheet</label>
+                </div>
+                <div class="checklist-item">
+                    <input type="checkbox" id="check16">
+                    <label for="check16">Plan tomorrow's key levels</label>
+                </div>
+            </div>
 
-        <h3>Technical Setup</h3>
-        <ul>
-            <li><strong>Trend Indicators:</strong> 20 EMA & 50 SMA</li>
-            <li><strong>Momentum:</strong> RSI (14)</li>
-            <li><strong>Volatility:</strong> ATR for stop placement</li>
-        </ul>
+            <h3>🛡️ RISK MANAGEMENT MATRIX</h3>
 
-        <h3>Entry Rules (ALL Must Align)</h3>
-        <ol>
-            <li><strong>Trend Confirmation:</strong> Price above 20 EMA & 50 SMA (for longs)</li>
-            <li><strong>Pullback Signal:</strong> Price touches 20 EMA</li>
-            <li><strong>Momentum:</strong> RSI in 40-45 zone</li>
-            <li><strong>Price Action:</strong> Bullish engulfing or pin bar candle forms</li>
-            <li><strong>No News:</strong> Clear 8-minute window before/after news</li>
-        </ol>
-
-        <h3>Position Sizing & Risk Management</h3>
-        
-        <table>
-            <tr>
-                <th>Phase</th>
-                <th>Risk Per Trade</th>
-                <th>Dollar Amount</th>
-                <th>Stop Loss</th>
-                <th>Take Profit</th>
-            </tr>
-            <tr>
-                <td>Phase 1</td>
-                <td>0.8%</td>
-                <td>$397</td>
-                <td>1.5 ATR (~15-25 pips)</td>
-                <td>3:1 RR (~45-75 pips)</td>
-            </tr>
-            <tr>
-                <td>Phase 2</td>
-                <td>0.9%</td>
-                <td>$463</td>
-                <td>1.5 ATR (~15-25 pips)</td>
-                <td>3:1 RR (~45-75 pips)</td>
-            </tr>
-        </table>
-
-        <h3>Trade Management Protocol</h3>
-        <ul>
-            <li><strong>At 1.5R:</strong> Move stop loss to breakeven</li>
-            <li><strong>At 2R:</strong> Take 30% profit, let 70% run to 3R target</li>
-            <li><strong>At 3R:</strong> Close entire position</li>
-            <li><strong>Minimum Duration:</strong> Hold for 5+ minutes (safe buffer above 2min rule)</li>
-        </ul>
-
-        <h2>📅 DAILY EXECUTION CHECKLIST</h2>
-
-        <h3>Pre-Market Preparation (7:30 AM )</h3>
-        <div class="checklist">
-            <ul>
-                <li>Check economic calendar for high-impact news events</li>
-                <li>Identify key support/resistance levels on 1H and 4H charts</li>
-                <li>Calculate today's exact risk amount (Balance × 0.008)</li>
-                <li>Set mental limits: $500 profit OR $800 loss = DONE for day</li>
-                <li>Review yesterday's trades and journal notes</li>
-            </ul>
-        </div>
-
-        <h3>During Trading Session (8:00 AM - 6:00 PM)</h3>
-        <div class="checklist">
-            <ul>
-                <li>Wait for complete setup: Trend + Pullback + RSI + Price Action</li>
-                <li>Verify no news events within 8-minute window</li>
-                <li>Place trade with pre-calculated stop (1.5 ATR) and target (3 ATR)</li>
-                <li>Set phone alarm for 8 minutes before any scheduled news</li>
-                <li>Document entry in trade journal immediately</li>
-                <li>Monitor position but avoid over-managing</li>
-                <li>STOP after 2 trades regardless of outcome</li>
-            </ul>
-        </div>
-
-        <h3>Post-Market Review</h3>
-        <div class="checklist">
-            <ul>
-                <li>Log complete trade details: entry, exit, P&L, screenshots</li>
-                <li>Document emotional state and decision-making quality</li>
-                <li>Calculate running metrics: largest win, largest loss, biggest profit day</li>
-                <li>Update consistency tracking spreadsheet</li>
-                <li>Identify key support/resistance levels for tomorrow</li>
-            </ul>
-        </div>
-
-        <h2>🛡️ RISK MANAGEMENT MATRIX</h2>
-
-        <div class="risk-matrix">
-Current Balance: $49,714
-Buffer Target: $51,214 (need to reach first)
-Safe Zone: $52,714+ (buffer complete, withdrawals possible)
+            <div class="risk-matrix">Current Balance: $49,714
+Buffer Target: $51,214
+Safe Zone: $52,714+
 
 DAILY LIMITS:
-├─ Maximum Loss: $800 (1.6% - safe buffer below 3% rule)
-├─ Maximum Profit: $500 (Phase 1) / $700 (Phase 2)
-├─ Maximum Trades: 2 trades per day
-└─ Trading Window: 8:00 AM - 12:00 PM EST ONLY
+├─ Max Loss: $800 (1.6%)
+├─ Max Profit: $500 (Phase 1) / $700 (Phase 2)
+├─ Max Trades: 2 per day
+└─ Session: 8 AM - 12 PM EST ONLY
 
 PER-TRADE LIMITS:
-├─ Risk Amount: 0.8-0.9% ($397-$463 depending on phase)
+├─ Risk: 0.8-0.9% ($397-$463)
 ├─ Stop Loss: 1.5 ATR below entry
-├─ Take Profit: 3 ATR above entry (3:1 minimum RR)
-└─ Hold Duration: Minimum 5 minutes (buffer above 2min rule)
+├─ Take Profit: 3 ATR above entry
+└─ Duration: Minimum 5 minutes
 
 DRAWDOWN PROTECTION:
-├─ Daily DD Threshold: $48,550 (3% from rollover balance)
-├─ Max DD Threshold: $47,250 (5% from highest equity)
-└─ Account Buffer: Must maintain $1,500 profit cushion
-        </div>
+├─ Daily DD: $48,550
+├─ Max DD: $47,250
+└─ Buffer: $1,500 required</div>
 
-        <h2>🎯 CONSISTENCY RULE MANAGEMENT</h2>
+            <h3>🧠 PSYCHOLOGICAL RULES</h3>
 
-        <div class="info-box">
-            <strong>The 15% Rule Explained:</strong><br>
-            Your largest winning day cannot exceed 15% of your total net profits at withdrawal time.
-            <br><br>
-            <strong>Example:</strong> If you want to withdraw with $5,000 profit:<br>
-            Maximum single-day profit = $5,000 × 0.15 = <strong>$750</strong>
-            <br><br>
-            <strong>Strategy:</strong> Target consistent $600-700 profit days, never exceeding $750 in Phase 2.
-        </div>
-
-        <h3>Phase 2 Consistency Plan</h3>
-        <table>
-            <tr>
-                <th>Week</th>
-                <th>Target Days</th>
-                <th>Daily Target</th>
-                <th>Weekly Total</th>
-            </tr>
-            <tr>
-                <td>Week 1</td>
-                <td>4 trading days</td>
-                <td>$650/day</td>
-                <td>$2,600</td>
-            </tr>
-            <tr>
-                <td>Week 2</td>
-                <td>4 trading days</td>
-                <td>$700/day</td>
-                <td>$2,800</td>
-            </tr>
-            <tr>
-                <td>Week 3</td>
-                <td>2 trading days</td>
-                <td>$600/day</td>
-                <td>$1,200</td>
-            </tr>
-            <tr>
-                <td><strong>TOTAL</strong></td>
-                <td><strong>10 days</strong></td>
-                <td><strong>Avg $665</strong></td>
-                <td style="color: #48bb78;"><strong>$6,600</strong></td>
-            </tr>
-        </table>
-
-        <h2>🧠 PSYCHOLOGICAL RULES (THE EDGE)</h2>
-
-        <div class="success-box">
-            <strong>These Mental Rules Separate Winners from Losers:</strong>
-            <ol>
-                <li><strong>2 Losses = Done:</strong> If you lose 2 trades in a row, STOP for the day. Market conditions aren't aligned.</li>
-                <li><strong>Target Hit = Close Platform:</strong> Hit your daily profit target early? Close your trading platform. Don't give back profits.</li>
-                <li><strong>No Revenge Trading:</strong> The market doesn't owe you anything. Stick to the system, trust the process.</li>
-                <li><strong>Friday Discipline:</strong> Close ALL positions by 4:30 PM EST Friday. No weekend holding exceptions.</li>
-                <li><strong>News Respect:</strong> Set multiple alarms. One news violation can forfeit weeks of profits.</li>
-                <li><strong>Journal Everything:</strong> Your journal is your accountability partner. Review it weekly.</li>
-                <li><strong>Sleep & Recovery:</strong> Trading requires peak mental performance. 7-8 hours sleep non-negotiable.</li>
-            </ol>
-        </div>
-
-        <h2>⏱️ EXPECTED TIMELINE</h2>
-
-        <table>
-            <tr>
-                <th>Days</th>
-                <th>Phase</th>
-                <th>Target Balance</th>
-                <th>Milestone</th>
-            </tr>
-            <tr>
-                <td>1-12</td>
-                <td>Phase 1</td>
-                <td>$51,500</td>
-                <td>Buffer Complete, Withdrawal Eligible</td>
-            </tr>
-            <tr>
-                <td>13-25</td>
-                <td>Phase 2</td>
-                <td>$57,500+</td>
-                <td>Target Achieved</td>
-            </tr>
-            <tr>
-                <td>26-28</td>
-                <td>Final Push</td>
-                <td>$58,000+</td>
-                <td>Buffer for Withdrawal Request</td>
-            </tr>
-            <tr>
-                <td>28</td>
-                <td>Withdrawal</td>
-                <td>-</td>
-                <td>Request $5,000 (80% = $4,000 payout)</td>
-            </tr>
-        </table>
-
-        <h2>🚨 RED FLAGS - NEVER CROSS THESE LINES</h2>
-
-        <div class="alert-box">
-            <strong>Instant Account Breach Triggers:</strong>
-            <ul>
-                <li>❌ Trading within 8-minute news window (profit deduction/breach)</li>
-                <li>❌ Holding positions over weekend (automatic breach)</li>
-                <li>❌ Single-day profit exceeding $750 before withdrawal (consistency violation)</li>
-                <li>❌ Taking 3+ trades per day consistently (gambling flag)</li>
-                <li>❌ Rapid strategy switching mid-day (gambling behavior)</li>
-                <li>❌ Exceeding 1% risk per trade (instant violation)</li>
-                <li>❌ Largest loss exceeding largest win (will fail consistency)</li>
-            </ul>
-        </div>
-
-        <h2>📊 EXPECTED PERFORMANCE METRICS</h2>
-
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-label">Win Rate Target</div>
-                <div class="stat-value">55-65%</div>
+            <div class="success-box">
+                <strong>Mental Discipline Rules:</strong>
+                <ol>
+                    <li><strong>2 Losses = Done:</strong> Stop trading for the day</li>
+                    <li><strong>Target Hit = Close Platform:</strong> Don't give back profits</li>
+                    <li><strong>No Revenge Trading:</strong> Stick to the system</li>
+                    <li><strong>Friday Discipline:</strong> Close all by 4:30 PM EST</li>
+                    <li><strong>News Respect:</strong> Set multiple alarms</li>
+                    <li><strong>Journal Everything:</strong> Your accountability partner</li>
+                    <li><strong>Sleep:</strong> 7-8 hours non-negotiable</li>
+                </ol>
             </div>
-            <div class="stat-card">
-                <div class="stat-label">Risk:Reward</div>
-                <div class="stat-value">1:3</div>
+
+            <h3>⏱️ EXPECTED TIMELINE</h3>
+
+            <table>
+                <tr>
+                    <th>Days</th>
+                    <th>Phase</th>
+                    <th>Target Balance</th>
+                    <th>Milestone</th>
+                </tr>
+                <tr>
+                    <td>1-12</td>
+                    <td>Phase 1</td>
+                    <td>$51,500</td>
+                    <td>Buffer Complete</td>
+                </tr>
+                <tr>
+                    <td>13-25</td>
+                    <td>Phase 2</td>
+                    <td>$57,500+</td>
+                    <td>Target Achieved</td>
+                </tr>
+                <tr>
+                    <td>28</td>
+                    <td>Withdrawal</td>
+                    <td>-</td>
+                    <td>Request $5,000</td>
+                </tr>
+            </table>
+
+            <h3>🚨 RED FLAGS - NEVER CROSS</h3>
+
+            <div class="alert-box">
+                <strong>Instant Breach Triggers:</strong>
+                <ul>
+                    <li>❌ Trading during news window</li>
+                    <li>❌ Weekend holding</li>
+                    <li>❌ Single-day profit exceeding $750</li>
+                    <li>❌ Taking 3+ trades per day</li>
+                    <li>❌ Exceeding 1% risk per trade</li>
+                    <li>❌ Largest loss > largest win</li>
+                </ul>
             </div>
-            <div class="stat-card">
-                <div class="stat-label">Avg Pips/Trade</div>
-                <div class="stat-value">25-40</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-label">Trades/Day</div>
-                <div class="stat-value">1-2</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-label">Trading Days</div>
-                <div class="stat-value">22-25</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-label">Total Trades</div>
-                <div class="stat-value">30-40</div>
+
+            <h3>✅ FINAL EXECUTION MANDATE</h3>
+
+            <div class="success-box">
+                <p style="font-size: 15px; line-height: 1.8;">
+                    <strong>Remember:</strong> This is about surgical precision and discipline.
+                    <br><br>
+                    Gold moves 900-1,500 pips daily. You only need 25-40 pips per trade, 1-2 trades per day.
+                    <br><br>
+                    <strong>Your mission:</strong> Execute with zero deviation. Log every trade. Respect every rule.
+                    <br><br>
+                    <strong style="font-size: 18px; color: #667eea;">Withdraw $5,000 in 30 days. Then scale.</strong>
+                </p>
             </div>
         </div>
-
-        <h2>✅ FINAL EXECUTION MANDATE</h2>
-
-        <div class="success-box">
-            <p style="font-size: 16px; line-height: 1.8; margin: 0;">
-                <strong>Remember:</strong> This isn't about getting rich quick. It's about surgical precision, unwavering discipline, and letting mathematics work in your favor.
-                <br><br>
-                Gold moves 900-1,500 pips daily. You only need 25-40 pips per trade, 1-2 trades per day. The market will deliver if you have the discipline to wait for YOUR setup—not chase every move.
-                <br><br>
-                <strong>Your mission:</strong> Execute this plan with zero deviation. Log every trade. Respect every rule. Trust the process.
-                <br><br>
-                <strong style="font-size: 20px; color: #667eea;">Withdraw $5,000 in 30 days. Then scale.</strong>
-            </p>
+        
+        <div class="btn-group">
+            <button class="download-btn" onclick="generatePDF()">
+                📥 DOWNLOAD PDF
+            </button>
+            <button class="reset-btn" onclick="resetChecklist()">
+                🔄 RESET CHECKLIST
+            </button>
         </div>
-
-        <button class="download-btn" onclick="downloadPDF()">📥 DOWNLOAD FULL STRATEGY PDF</button>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script>
-        function downloadPDF() {
-            const element = document.getElementById('content');
-            const button = document.querySelector('.download-btn');
+        // Load saved checklist state
+        document.addEventListener('DOMContentLoaded', function() {
+            loadChecklistState();
             
+            // Add event listeners to all checkboxes
+            document.querySelectorAll('.checklist-item input[type="checkbox"]').forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    const item = this.closest('.checklist-item');
+                    if (this.checked) {
+                        item.classList.add('checked');
+                    } else {
+                        item.classList.remove('checked');
+                    }
+                    saveChecklistState();
+                });
+            });
+        });
+        
+        function saveChecklistState() {
+            const checkboxes = document.querySelectorAll('.checklist-item input[type="checkbox"]');
+            const state = {};
+            checkboxes.forEach(checkbox => {
+                state[checkbox.id] = checkbox.checked;
+            });
+            localStorage.setItem('checklistState', JSON.stringify(state));
+        }
+        
+        function loadChecklistState() {
+            const saved = localStorage.getItem('checklistState');
+            if (saved) {
+                const state = JSON.parse(saved);
+                Object.keys(state).forEach(id => {
+                    const checkbox = document.getElementById(id);
+                    if (checkbox) {
+                        checkbox.checked = state[id];
+                        const item = checkbox.closest('.checklist-item');
+                        if (state[id]) {
+                            item.classList.add('checked');
+                        }
+                    }
+                });
+            }
+        }
+        
+        function resetChecklist() {
+            if (confirm('Are you sure you want to reset all checklist items?')) {
+                document.querySelectorAll('.checklist-item input[type="checkbox"]').forEach(checkbox => {
+                    checkbox.checked = false;
+                    checkbox.closest('.checklist-item').classList.remove('checked');
+                });
+                localStorage.removeItem('checklistState');
+            }
+        }
+        
+        async function generatePDF() {
+            const button = document.getElementById('downloadBtn');
+            const originalText = button.textContent;
             button.textContent = '⏳ Generating PDF...';
             button.disabled = true;
             
-            const opt = {
-                margin: [0.5, 0.5, 0.5, 0.5],
-                filename: 'Elite_Gold_Trading_Strategy_50K_Account.pdf',
-                image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 2, useCORS: true, letterRendering: true },
-                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
-            };
-            
-            html2pdf().set(opt).from(element).save().then(() => {
+            try {
+                const { jsPDF } = window.jspdf;
+                const content = document.getElementById('content');
+                
+                // Hide buttons during capture
+                document.querySelectorAll('.btn-group').forEach(el => el.style.display = 'none');
+                
+                const canvas = await html2canvas(content, {
+                    scale: 2,
+                    useCORS: true,
+                    logging: false,
+                    windowWidth: 1200
+                });
+                
+                // Show buttons again
+                document.querySelectorAll('.btn-group').forEach(el => el.style.display = 'flex');
+                
+                const imgData = canvas.toDataURL('image/png');
+                const pdf = new jsPDF({
+                    orientation: 'portrait',
+                    unit: 'mm',
+                    format: 'a4'
+                });
+                
+                const imgWidth = 210;
+                const pageHeight = 297;
+                const imgHeight = (canvas.height * imgWidth) / canvas.width;
+                let heightLeft = imgHeight;
+                let position = 0;
+                
+                pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                heightLeft -= pageHeight;
+                
+                while (heightLeft >= 0) {
+                    position = heightLeft - imgHeight;
+                    pdf.addPage();
+                    pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                    heightLeft -= pageHeight;
+                }
+                
+                pdf.save('Equity_Edge_Trading_Plan.pdf');
+                
                 button.textContent = '✅ PDF Downloaded!';
                 setTimeout(() => {
-                    button.textContent = '📥 DOWNLOAD FULL STRATEGY PDF';
+                    button.textContent = originalText;
                     button.disabled = false;
                 }, 3000);
-            });
+            } catch (error) {
+                console.error('PDF generation error:', error);
+                alert('Error generating PDF. Please try again.');
+                button.textContent = originalText;
+                button.disabled = false;
+            }
         }
     </script>
 </body>
