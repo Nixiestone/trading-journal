@@ -1,15 +1,13 @@
-// Vanilla JS Trading Journal
-
 const app = document.getElementById('app');
 let trades = [];
-let accountBalance = 49714;
+let accountBalance = 49694.50;
 
 function render() {
   app.innerHTML = `
     <div class="max-w-7xl mx-auto">
       <div class="bg-white rounded-xl shadow-2xl p-8 mb-6">
         <h1 class="text-3xl font-bold text-gray-800 mb-2">Gold Trading Journal</h1>
-        <p class="text-gray-600 mb-4">Elite Alpha Trader | $50K Prop Account</p>
+        <p class="text-gray-600 mb-4"> $50K Prop Account</p>
         <div class="mb-4">
           <span class="font-semibold">Account Balance:</span> $${accountBalance.toFixed(2)}
         </div>
@@ -113,4 +111,3 @@ function calcPL(data) {
 }
 
 render();
-// ...end of file...
